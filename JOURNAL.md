@@ -8,7 +8,7 @@ James Oehring, KU alum, Kansas City. Solo founder of **Vanyshr** (consumer data 
 **Reference points for his founder shape (Igor's honest read, Nov 11):** Tobi Lütke's systems-builder brain + Moxie Marlinspike's privacy-mission spine + Jason Fried/DHH's refusal of the startup costume, powered by Bukowski. Closest single known founder: Lütke. Explicitly NOT Musk — James is inspired by Musk but says he'd be a poser emulating him; Musk's superpower (narrative gravity + capital formation) is the opposite of James's actual strengths. Also in the mix: Sahil Lavingia (honest solo-founder introspection), Pieter Levels (shipping cadence), Palmer Luckey (nonconformist nerve — borrow the nerve, not the theater).
 
 ## The event
-**Techstars Startup Weekend, University of Kansas — first-ever KU edition. Nov 13–15, 2026, Capitol Federal Hall, Lawrence, KS.** FinTech is a named focus alongside AI and DeepTech. ~54 hours. Dress casual. Bring laptop, charger, business cards.
+**Techstars Startup Weekend, University of Kansas — first-ever KU edition. Nov 13–15, 2026, Capitol Federal Hall, Lawrence, KS.** FinTech is a named focus alongside AI and DeepTech. ~54 hours. Dress casual. Bring laptop, charger, business cards. Full detail (formats, rubric benchmarks, mentorship mechanics, agenda, rosters): **[event-guide.md](event-guide.md)** — this section is the condensed version.
 
 **Agenda (from the live event pages, Nov 11):**
 - **Friday:** 4:30pm arrival/registration · 5:00 dinner + networking (pre-pitch recruiting window) · 6:00 welcome · 6:30 ice-breaker · **7:00 pitches & idea selection** · 8:30 voting · 9:00 team formation · 9:30 wrap.

@@ -7,6 +7,7 @@ James is pitching a **sports-betting options exchange** Friday night: calls, put
 
 ## How to use this repo
 - **New agent?** Read `JOURNAL.md` first. It carries the whole context: the idea, the event rules, the people, the plan, and what's still open. Then go to the folder for your task.
+- **The event itself, in full detail:** `event-guide.md` — every format, rule, rubric detail, agenda item, and roster fact from the gated event pages.
 - **`people/`** — recon on every judge, mentor, speaker, and staffer in the building, plus tiered contact cards (most valuable to Vanyshr vs. most valuable to the competition).
 - **`pitch/`** — the Friday 60-second script, the name shortlist, the Sunday 3-minute structure, the Q&A bank, and both team strategies (build a team around the idea, or join someone else's team).
 - **Event day is Friday Nov 13.** Doors 4:30pm, dinner/networking 5pm, pitches 7pm, voting 8:30pm, teams 9pm. Saturday: workshops 9:15am/1pm, mentor 1:1s 2:30–5pm, office hours 7pm. Sunday: Pitching 101 9:10am, office hours 11am, tech check 1pm, slides freeze 4:30pm, final pitches 6:30pm.
@@ -22,6 +23,7 @@ James is pitching a **sports-betting options exchange** Friday night: calls, put
 ```
 README.md                  — this file
 JOURNAL.md                 — full context: vision, state, plan, open questions
+event-guide.md             — the event in full detail: formats, rules, rubric, agenda, rosters
 people/
   README.md                — roster, tier lists, Saturday usage order
   judges-recon.md          — full dossiers on the 5 judges

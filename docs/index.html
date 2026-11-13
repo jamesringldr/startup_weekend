@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Startup Weekend KU Field Guide</title>
+<style>
+:root{
+  --bg:#f5f4f0; --card:#ffffff; --ink:#15171a; --muted:#555b63; --line:#d9d6cd;
+  --accent:#0b5cad; --accent-ink:#ffffff;
+  --kill-bg:#fdecea; --kill-line:#c62828; --kill-ink:#7a1010;
+  --warn-bg:#fff4d6; --warn-ink:#6b4b00;
+  --v-bg:#ece4fb; --v-ink:#43237f; --c-bg:#dcf0e2; --c-ink:#12532a; --r-bg:#e3e9f1; --r-ink:#25364d;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#101214; --card:#1a1d21; --ink:#f0eee8; --muted:#a6adb5; --line:#2e3238;
+    --accent:#5aa9ff; --accent-ink:#06121f;
+    --kill-bg:#3a1514; --kill-line:#ef5350; --kill-ink:#ffd2cf;
+    --warn-bg:#3b3014; --warn-ink:#ffdf8a;
+    --v-bg:#2f2547; --v-ink:#d9c8ff; --c-bg:#173324; --c-ink:#b7ecc9; --r-bg:#252d38; --r-ink:#c9d6e8;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+header{padding:18px 0 10px}
+h1{font-size:1.5rem;line-height:1.2;margin:0 0 4px}
+.sub{color:var(--muted);font-size:.95rem;margin:0}
+.bar{position:sticky;top:0;z-index:20;background:var(--bg);padding:8px 0 8px;border-bottom:1px solid var(--line)}
+.search{width:100%;height:48px;font:inherit;padding:0 14px;border:2px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink)}
+.search:focus{outline:none;border-color:var(--accent)}
+.chips{display:flex;gap:8px;margin-top:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;min-height:44px;padding:0 16px;border:2px solid var(--line);border-radius:22px;background:var(--card);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.count{color:var(--muted);font-size:.9rem;margin:8px 0 0}
+nav.jump{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+nav.jump a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:2px solid var(--line);border-radius:10px;background:var(--card);text-decoration:none;font-weight:600;color:var(--ink)}
+section{scroll-margin-top:150px}
+h2{font-size:1.2rem;margin:26px 0 10px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.kill{background:var(--kill-bg);border:2px solid var(--kill-line);color:var(--kill-ink)}
+.kill h2{margin:0 0 8px;color:var(--kill-ink)}
+.kill ul{margin:0;padding-left:1.2em}
+.kill li{margin:4px 0;font-weight:600}
+.order{counter-reset:s;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.order li{counter-increment:s}
+.order button{width:100%;min-height:48px;text-align:left;display:flex;gap:10px;align-items:center;padding:8px 12px;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;cursor:pointer}
+.order button::before{content:counter(s);flex:0 0 26px;height:26px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:.85rem;font-weight:700;display:grid;place-items:center}
+.order .when{display:block;color:var(--muted);font-size:.85rem}
+.mech{color:var(--muted);font-size:.9rem;margin:10px 0 0}
+details.card{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0;scroll-margin-top:150px}
+details.card[hidden]{display:none}
+details.card>summary{list-style:none;cursor:pointer;display:flex;gap:12px;align-items:center;padding:12px 14px;min-height:72px}
+details.card>summary::-webkit-details-marker{display:none}
+details.card>summary::after{content:"\25BE";margin-left:auto;color:var(--muted);font-size:1.2rem;transition:transform .15s}
+details.card[open]>summary::after{transform:rotate(180deg)}
+.av{position:relative;flex:0 0 56px;width:56px;height:56px;border-radius:50%;overflow:hidden;display:grid;place-items:center;color:#fff;font-weight:700;font-size:1.2rem;letter-spacing:.02em}
+.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.who{min-width:0}
+.name{font-weight:700;font-size:1.08rem;line-height:1.2}
+.role{color:var(--muted);font-size:.9rem;line-height:1.3;margin-top:2px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.b{display:inline-block;padding:2px 8px;border-radius:6px;font-size:.78rem;font-weight:700;line-height:1.5}
+.b.v{background:var(--v-bg);color:var(--v-ink)}
+.b.c{background:var(--c-bg);color:var(--c-ink)}
+.b.r{background:var(--r-bg);color:var(--r-ink)}
+.b.w{background:var(--warn-bg);color:var(--warn-ink)}
+.body{padding:2px 16px 16px;border-top:1px solid var(--line)}
+.body h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:16px 0 6px}
+.body p{margin:0}
+.body ul{margin:0;padding-left:1.2em}
+.body li{margin:6px 0}
+.dont{background:var(--kill-bg);border-left:4px solid var(--kill-line);color:var(--kill-ink);border-radius:6px;padding:8px 12px}
+.dont ul{padding-left:1.1em}
+.follow{background:var(--bg);border-radius:8px;padding:8px 12px}
+.empty{display:none;text-align:center;color:var(--muted);padding:28px 0}
+footer{color:var(--muted);font-size:.85rem;margin-top:32px}
+noscript p{background:var(--warn-bg);color:var(--warn-ink);padding:12px;border-radius:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Startup Weekend KU: Field Guide</h1>
+    <p class="sub">Nov 13–15, 2026 · Capitol Federal Hall, Lawrence · Weekend (Track A) edition. Vanyshr appears only in follow-up lines.</p>
+  </header>
+  <noscript><p>This page needs JavaScript to show the people cards.</p></noscript>
+
+  <div class="bar" role="search">
+    <input id="q" class="search" type="search" placeholder="Search name, org, topic…" aria-label="Search people" autocomplete="off">
+    <div class="chips" id="chips" role="group" aria-label="Filters"></div>
+    <p class="count" id="count" aria-live="polite"></p>
+  </div>
+
+  <nav class="jump" aria-label="Jump to section">
+    <a href="#order">Saturday order</a>
+    <a href="#kill">Kill phrases</a>
+    <a href="#judges">Judges</a>
+    <a href="#mentors">Mentors</a>
+    <a href="#staff">Staff</a>
+  </nav>
+
+  <section id="order">
+    <h2>Saturday order</h2>
+    <div class="panel">
+      <ol class="order" id="orderList"></ol>
+      <p class="mech">Guest 1:1s Sat 2:30–5:00pm: each team gets two assigned 30-min sessions (pairings appear assigned, not chosen). Office hours Sat 7–8pm and Sun 11am–12pm. Always ask: “who else do you think I should be talking to about this idea?”</p>
+    </div>
+  </section>
+
+  <section id="kill">
+    <h2>Kill phrases</h2>
+    <div class="panel kill">
+      <ul>
+        <li>Never say “billionaire maker”</li>
+        <li>Never use an unfooted TAM</li>
+        <li>Never present USDC as a regulation workaround</li>
+        <li>Never call this an “unregulated space”</li>
+        <li>Never demo a trade on a KU game</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="judges"><h2>Judges <span class="sub" id="n-judge"></span></h2><div id="list-judge"></div></section>
+  <section id="mentors"><h2>Mentors <span class="sub" id="n-mentor"></span></h2><div id="list-mentor"></div></section>
+  <section id="staff"><h2>Staff and speakers <span class="sub" id="n-staff"></span></h2><div id="list-staff"></div></section>
+  <p class="empty" id="empty">No one matches. Clear the search or pick All.</p>
+
+  <footer>
+    Room-safe in-the-hallway version, built only from the repo’s recon files (people/judges-recon.md, people/mentors-recon.md, people/contact-cards.md, JOURNAL.md, event-guide.md). Where a dossier says role-only or presence unverified, the card says exactly that. Full dossiers stay in the repo.
+  </footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+var UNIVERSAL = "No person-specific kill phrase in the dossier. Use the kill-phrase box above.";
+
+var PEOPLE = [
+// ---------- JUDGES ----------
+{slug:"john-fein", name:"John Fein", group:"judge", v:1, c:null, pri:"Must-meet #1",
+ role:"Managing Partner, Firebrand Ventures / The Hill Fund",
+ why:"The only working VC on the panel and an ex-Techstars KC MD (3 cohorts, 30 startups). The Hill Fund is the first VC dedicated to KU-connected founders. Scores founder character, PMF signal, capital efficiency.",
+ points:[
+  "The exchange is infrastructure rails, not a casino. That is his portfolio pattern (Dwolla, Realto).",
+  "Lead with the capital-efficient wedge (data/pricing layer, simulation, B2B) and volunteer the regulatory map before he asks.",
+  "Bring a traction artifact Sunday: a live order book on a real game plus counted demand (interviews, waitlist)."],
+ qs:[
+  "You built Firebrand because Techstars companies here couldn’t raise seed. For a regulated FinTech like this, what would a team have to show by Sunday for you to believe it’s seed-fundable from the Midwest in 12 months?",
+  "I’d value your most sceptical question on it over the weekend."],
+ dont:["“Billionaire maker”","Hand-waved regulation","Invented traction","Anything about Vanyshr or funding during judging","Musk or Dalio (no overlap found)"],
+ follow:"LinkedIn connect Mon Nov 16: two lines, a specific conversation referenced, no deck, no Vanyshr. Vanyshr is a separate, later conversation."},
+
+{slug:"james-clarke", name:"James G. Clarke", group:"judge", v:null, c:null, pri:"Must-meet #2",
+ role:"SVP & CIO, KU Endowment",
+ why:"The allocator on the panel: ~$3.2B endowment, ~$700M PE/VC fund portfolio. He judges like a manager asking for capital: scenarios, downside, governance, math that foots.",
+ points:[
+  "Speak exchange, not sportsbook: market structure, clearing, collateral, risk transfer.",
+  "His hook, once: “This is an incomplete market being completed — the premium goes to whoever builds the clearing infrastructure first.”",
+  "Pre-empt his what-ifs for 20 seconds on stage: handle at 50%, a regulator pauses you, a market maker exits."],
+ qs:[
+  "When you watch Kalshi and Polymarket volumes grow, does an allocator see an emerging asset class — or a regulatory arbitrage that gets shut down? What would an event-contract market have to prove about clearing and counterparty before institutions take its numbers seriously?",
+  "I’m pitching the idea that sports risk belongs in an exchange, not a sportsbook. I’d value your what-ifs more than your vote."],
+ dont:["“Billionaire maker” (fatal with him)","Crypto-first (USDC reads as added risk to a fiduciary)","“Regulators don’t get it”"],
+ follow:"One email the following week via KU Endowment public channels: thank him for a specific what-if, say what the team changed because of it, ask the allocator-view question. No deck unless asked."},
+
+{slug:"tricia-bergman", name:"Tricia Bergman", group:"judge", v:2, c:null, pri:"Must-meet",
+ role:"Associate Vice Chancellor, Economic Development, KU",
+ why:"KU’s economic-development lead (Great Plains I-Corps Hub PI; flagship Partner with KU). Controls no fund. Scores validation (I-Corps style), Kansas benefit, responsible stewardship.",
+ points:[
+  "Lead with market infrastructure, not betting: transparency, price discovery, exit-anytime as harm reduction.",
+  "Give it a Kansas address early: KU alum, prototyped at the first KU weekend, hires KU grads, stays in the corridor.",
+  "Make weekend validation the proof: interview counts, what you learned, and an honest killed assumption (that reads as maturity to her)."],
+ qs:[
+  "For a Kansas FinTech company that isn’t a KU lab spinout, what should a founder do in the first six months to become the kind of company KU can actually help? I-Corps, Innovation Park, Partner with KU — what’s the right sequence?",
+  "I’d value your read Sunday on whether we validated it the right way."],
+ dont:["“Billionaire maker” or TAM theater","Unqualified “Betfair for America”","Crypto settlement as an end-run","Students as target users","Any implied KU or Techstars endorsement","Calling her “Dr.” (say “Ms. Bergman”)"],
+ follow:"Email Mon–Tue Nov 16–17: one small ask (20-min routing conversation for a Kansas consumer-cyber company), no deck uninvited, never bundle the betting idea and Vanyshr in one message."},
+
+{slug:"adam-courtney", name:"Adam Courtney", group:"judge", v:2, c:null, pri:"Tier 2 must-meet",
+ role:"CEO & Board President, KU Innovation Park",
+ why:"Ecosystem operator: ex-FHFA (title/dates unverified), ~10 years as the Park’s finance chief before CEO. Scores staging, leverage, jobs/payroll in Kansas, execution progress.",
+ points:[
+  "Two-sided exchange with a take rate, not a book taking principal risk. This is the single most important sentence for him.",
+  "Staged de-risking in his Invary sequence (proof-of-concept money, then investable stage, then follow-on). Kansas-corridor jobs stated once, in numbers.",
+  "Name regulation before he does: state gaming vs CFTC, geofencing, licensed-partner entry."],
+ qs:[
+  "You spent ten years as the Park’s CFO before becoming CEO — when a regulated, capital-hungry idea shows up, what does the staged proof look like that makes a finance person take it seriously before the big raise? Is it the Invary sequence?"],
+ dont:["“Needs major funding” as an opener","Crypto as a regulation workaround","A forced Park-tenancy angle"],
+ follow:"Email week of Nov 16 to his Park address: a specific thing he said plus the Founder Pipeline outcome. Separate 20-min ask on Oread/Park services for Vanyshr (it waits if the team makes Founder Pipeline)."},
+
+{slug:"heath-peterson", name:"Heath Peterson", group:"judge", v:3, c:null, pri:"Must-meet (network)",
+ role:"President, KU Alumni (and Vice Chancellor of Alumni Relations)",
+ why:"The panel’s story and consensus vote. Can a non-expert retell it in one sentence? KU lifer, 400,000-alumni network. If he can’t follow the pitch, he is the canary.",
+ points:[
+  "Plain version first (10 seconds): “Every fan in Allen Fieldhouse has an opinion about the game. Today the only way to act on it is a bet you can’t change. We built a stock market for sports opinions — buy, sell, or get out mid-game, like a stock.”",
+  "Fixed-risk framing (“never lose more than you put in”) reads as consumer protection to him.",
+  "Participation numbers lead: five strangers trading beats a matching-engine diagram. Use fan knowledge and passion as demand proof."],
+ qs:[
+  "You see every Jayhawk founder story before anyone features it — what separates the ones the network actually rallies behind from the ones that just get a polite like?"],
+ dont:["Unexplained microstructure (order book, oracle, settlement, USDC)","Degen, parlay, locks, easy-money language","“We’ll distribute through alumni networks / KU fans” as go-to-market, in his hearing","Putting a Jayhawk in a betting graphic"],
+ follow:"Thank-you Mon–Tue Nov 16–17 citing one specific thing he said, then 2–3 weeks of silence. Vanyshr / KU Hustle approach in December via Alumni comms staff."},
+
+// ---------- MENTORS ----------
+{slug:"david-morris", name:"David Morris", group:"mentor", v:3, c:1,
+ role:"Entrepreneur-in-Residence, KU Business; Founder Pipeline Cohort coach",
+ why:"Designated coach for the Founder Pipeline Cohort (6–8 weeks from mid-Jan 2027), so Saturday time with him is effectively a January audition. Founder of ZuPreem, sold Apr 2021 to Manna Pro (Carlyle).",
+ points:[
+  "Use him mid-to-late Saturday. Bring the one-page evidence log plus one hard decision framed as evidence-vs-fork.",
+  "Genuine line: “We’re treating this weekend as the start of the evidence trail, not the finish line.”",
+  "If there is any influence over the 1:1 assignment, ask for Morris (and Wagner)."],
+ qs:[
+  "What evidence bar clears Founder Pipeline / Founder Catalyst candidacy by January?",
+  "What did the evidence look like when you knew ZuPreem was actually working, versus when you were just hopeful?"],
+ dont:["Claiming shared Musk or Dalio ground (never claim either)"],
+ follow:"Thank-you within days. A Vanyshr mention waits for a traction milestone or his direct ask."},
+
+{slug:"scott-wagner", name:"Scott Wagner", group:"mentor", v:null, c:1,
+ role:"Co-founder, HYLA Mobile; former Assurant executive",
+ why:"Built a secondary market at HYLA: carriers collect used phones, HYLA prices, data-clears and resells them (>55M devices reclaimed). Acquired by Assurant (closed Dec 2020). Request him first in any choosable slot.",
+ points:[
+  "Opener: “You built a secondary market at HYLA — pricing used phones nobody could value. We’re trying to build the same thing for sports positions.”",
+  "Bring the one-page market-design sheet: who posts first bid/ask, who bears pricing risk, what the spread pays for, what data prices a live position.",
+  "Genuine line: “HYLA’s edge was 30 million transaction records to price what nobody could price. The equivalent asset here is position-trading data.”"],
+ qs:[
+  "HYLA solved cold-start by making carriers the collection point. For an exchange with no incumbent channel, where does the first liquidity honestly come from?"],
+ dont:["Work from his experience, not doctrine. " + UNIVERSAL],
+ follow:"LinkedIn connect Nov 17–21 referencing the liquidity conversation. Vanyshr stays out unless he asks."},
+
+{slug:"lesa-mitchell", name:"Lesa Mitchell", group:"mentor", v:1, c:1,
+ role:"Managing Director / GM, Go-to-Market, Alloy Partners; Sunday Pitching 101 teacher",
+ why:"Highest-leverage non-judge in the building. Ex-Kauffman Foundation VP, ex-Managing Director of Techstars Kansas City, instrumental in scaling Startup Weekend itself. KU grad.",
+ points:[
+  "Her skeleton: What & Where / Why / Who / How (How = three bullets). Whole team in Pitching 101 (Sun 9:10), front of room. Visibly rebuild the 3 minutes on it.",
+  "“Why now” is a required beat, and the team should be visibly load-bearing in the “Who”. Story first, mechanics in three bullets.",
+  "Sun 11am office hour: 5 minutes, deliver the rebuilt opening 30 seconds. Bring the pitch, not the company (“tear down the story, not the business”)."],
+ qs:[
+  "Our “How” is market mechanics — an order book, not a house edge. In three bullets, what would you keep?",
+  "Our “Why now” is prediction-market infrastructure normalizing while sportsbooks still lock bettors in. Does that read as a why-now or as market timing?",
+  "Where do teams usually lose the “Who” in a 3-minute pitch?"],
+ dont:["Pitching her Vanyshr (wrong room, wrong day)","Leading with TAM","Demoing a trade on a KU game","Calling the exchange “unregulated space”","Building an opener on the event card’s “(and.com)”"],
+ follow:"Week after: one specific thing her framework changed plus the weekend result. Vanyshr only in a second touch, framed as GTM counsel, never bundled with the exchange."},
+
+{slug:"jeremy-tasset", name:"Jeremy Tasset", group:"mentor", v:2, c:3,
+ role:"CEO, Nueterra Capital; Venture Partner, The Hill Fund",
+ why:"Fein’s partner at the Hill Fund (its healthcare lead). Anything sloppy said to Tasset is effectively said in the Hill Fund partnership. Respects clearing, collateral and regulatory-structure framing over betting framing.",
+ points:[
+  "Use if a slot opens: Saturday afternoon with the pitch draft plus market math (fees on matched trades, not house edge).",
+  "Genuine line: “We’re building inside the terrain, not around it.”"],
+ qs:[
+  "What would you need to believe about the regulatory path to take a first meeting on something like this?"],
+ dont:["Anything sloppy (it travels to the Hill Fund)",UNIVERSAL],
+ follow:"No separate November follow-up. Hill Fund conversations run through the Fein track only."},
+
+{slug:"michael-torno", name:"Michael Torno", group:"mentor", v:2, c:3,
+ role:"Co-Founder & CRO, PathologyWatch; Advisory Board Chair, Digital Health KC",
+ why:"Focus-as-strategy: he praises a CEO who keeps the team “very engaged in doing something very, very well.” PathologyWatch was acquired by Sonic Healthcare (2023). Shared Cerner heritage with James is a real warm fact.",
+ points:[
+  "Sat 2:30pm 1-on-1s if drawn. Bring validation numbers plus a one-page narrowed scope: one league, one contract type, the exit-a-position moment.",
+  "Genuine line: “We’re trying to do one thing very, very well this weekend.”"],
+ qs:[
+  "What would make you believe the second contract type is earned?"],
+ dont:["The strategy zoo (spreads, condors, USDC)","The 10-year thesis","Quoting an acquisition price (say only “the Sonic acquisition”)"],
+ follow:"LinkedIn connect Nov 17–21, two lines referencing the validation conversation. No Vanyshr pitch in message one."},
+
+{slug:"megan-bowles", name:"Megan Bowles", group:"mentor", v:3, c:2, flags:["ROLE-ONLY"],
+ role:"Corporate Associate, Cooley LLP",
+ why:"Role-only card. The full dossier was never delivered, so nothing is asserted beyond role and affiliation.",
+ points:[],
+ qs:[],
+ dont:[UNIVERSAL],
+ follow:"Light touch only. No Vanyshr legal ask at the weekend."},
+
+{slug:"doug-burris", name:"Doug Burris", group:"mentor", v:3, c:2, flags:["ROLE-ONLY"],
+ role:"Founder & Principal, DBI2 Consulting",
+ why:"Role-only card. The full dossier was never delivered, so nothing is asserted beyond role and affiliation.",
+ points:[],
+ qs:["If a slot opens: “Where do teams overbuild on Saturday and under-validate?”"],
+ dont:[UNIVERSAL],
+ follow:"None in the dossier."},
+
+{slug:"jaime-gassmann", name:"Jaime Gassmann", group:"mentor", v:null, c:2, flags:["PRESENCE UNVERIFIED","HEADLINE ONLY"],
+ role:"Entrepreneurship Lecturer, KU Business",
+ why:"On the original carousel but NOT on the live mentors gallery. Presence unverified: verify in the room Friday. Headline only, not a dossier: Invary product strategist, customer-discovery specialist (Five Whys, interview-evidence-first).",
+ points:[
+  "If present: an interview-design check on the Saturday sprint.",
+  "If absent: Rains and Jackson cover the same ground."],
+ qs:[],
+ dont:[UNIVERSAL],
+ follow:"None in the dossier."},
+
+{slug:"jeff-shackelford", name:"Jeff Shackelford", group:"mentor", v:1, c:3, flags:["NOT ATTENDING"],
+ role:"President & CEO, Enterprise Center in Johnson County (ECJC)",
+ why:"NOT attending the weekend, so there are no weekend talking points. Also runs Mid-America Angels and oversees the Fountain Innovation Fund. His angel criteria, in his words: “Show me a good team with a good concept, and some ability to have traction to hit a few milestones.”",
+ points:[],
+ qs:[],
+ dont:["Blending the betting exchange and Vanyshr in the same meeting"],
+ follow:"ECJC conversation 2–4 weeks post-weekend, milestone-tied, Vanyshr-only. Public path: ecjc.com / Growth Mentoring Service."},
+
+// ---------- STAFF ----------
+{slug:"ryan-rains", name:"Ryan Rains", group:"staff", v:3, c:1,
+ role:"Director of Entrepreneurship Co-Curricular Programming, KU Business; I-Corps instructor",
+ why:"The validation-method authority in the building, and co-leader of Workshop 1 with Jackson. His line: “the marketplace — not passion alone — determines business viability.” Use him early.",
+ points:[
+  "Saturday morning or early afternoon, before the build locks: bring the interview tally plus the least-sure assumption.",
+  "Genuine line: “The marketplace may or may not validate it, and we’d rather find out Saturday than Sunday.”"],
+ qs:[
+  "What would you need to see before you’d call that marketplace validation rather than politeness?",
+  "For a two-sided exchange, which side do you validate first?"],
+ dont:["Passion-alone arguments and social-media success theater (he is against both)"],
+ follow:"Late November, framed as coaching and discovery rigor, never bundled with the betting project."},
+
+{slug:"chad-jackson", name:"Chad Jackson", group:"staff", v:3, c:1,
+ role:"Teaching Professor, KU School of Business; Workshop 1 co-lead",
+ why:"Co-teaches Workshop 1 (Sat 9:15am, Lean Business Canvas and Customer Discovery) with Rains. Likely came from K-State’s entrepreneurship center (medium-high confidence, unconfirmed). His Impact lens is not soft: modest and measurable beats vague.",
+ points:[
+  "Extract his canvas-filling order and exact vocabulary. Mirror it on the canvas and in the Sunday pitch.",
+  "Ask for the riskiest-assumption test and the interview protocol, in and right after Workshop 1.",
+  "Reported, single-source: data, not ideas, is what raises money. Probe it, don’t quote it back."],
+ qs:[
+  "For a two-sided market where we can’t interview the “other side” at scale this weekend, what’s the strongest proxy evidence you’d accept on a canvas?",
+  "We treated “bettors are locked into positions they can’t exit” as our problem box — what would falsify that in ten interviews?",
+  "Did you come over from K-State’s entrepreneurship center?"],
+ dont:["Vague impact claims","Quoting the single-source “ideas are sexy” line back to him"],
+ follow:"None in the dossier."},
+
+{slug:"brian-anderson", name:"Brian Anderson", group:"staff", v:3, c:2,
+ role:"Executive Director, Entrepreneurship Initiatives & The Hub, KU Business",
+ why:"Leading entrepreneurial-orientation scholar. He splits pitches on creation vs capture: entrepreneurship is solving “a meaningful problem in a meaningful way that allows for the creation and capture of economic value.”",
+ points:[
+  "Midday Saturday with real numbers and honest denominators. He is allergic to sloppy inference.",
+  "He refuses the judge role: don’t ask whether it is a good idea."],
+ qs:[
+  "On the capture half, where do weekend teams most often fool themselves?"],
+ dont:["“Is this a good idea?”","Sloppy inference"],
+ follow:"Week after, tied to something concrete only."},
+
+{slug:"glory-eromosele", name:"Glory Eromosele", group:"staff", v:null, c:1,
+ role:"Program Manager, KU & Techstars Programs, Techstars (event card: Facilitator)",
+ why:"Organizer-side pitch-structure specialist: prove traction even at idea stage, earn follow-up meetings. Amplifies #GiveFirst. Competition Tier 1 comes from the mentors recon; she is not in the contact-card lists.",
+ points:[
+  "Bring the Sunday pitch draft Saturday afternoon, once validation numbers exist.",
+  "Use late afternoon Saturday, once there is evidence to structure."],
+ qs:[
+  "What separates the teams that earn follow-up meetings from the ones that just win applause?",
+  "What’s the strongest form of idea-stage proof you’ve seen?"],
+ dont:[UNIVERSAL],
+ follow:"Nov 16–20: thank-you, one thing the feedback changed, and a question on what KU × Techstars programming opens next. No deck, no Vanyshr in message one."},
+
+{slug:"telesha-bowen", name:"Telesha Bowen", group:"staff", v:3, c:3,
+ role:"Program Lead, Entrepreneurial Coach, Techstars (Techstars Startup Community)",
+ why:"The pipeline oracle: Startup Weekend to Founder Catalyst to Accelerator is one engineered pipeline in her doctrine. She co-operates the weekend (mentor logistics, coaching cadence, pitch-day mechanics). A process contact, not an idea mentor.",
+ points:[
+  "Ask exactly two process questions, once each, early.",
+  "Sunday circulating ask: what teams from weekends like this most commonly get wrong applying to Founder Catalyst."],
+ qs:[
+  "How are the two guest-mentor 1:1 pairings assigned — is there anything a team can do Friday night to be matched well?",
+  "For the post-weekend idea submission to KU staff — what does a strong submission look like, and is the exchange the kind of thing Founder Catalyst takes, or is that door KU-mentorship only?",
+  "What do teams from weekends like this most commonly get wrong when they apply to Founder Catalyst?"],
+ dont:["Pitching her the exchange or Vanyshr","Treating her as a back door into the Techstars application (she is pre-accelerator, not an accelerator MD)"],
+ follow:"Week after via event channels (no verified personal LinkedIn handle surfaced)."},
+
+{slug:"tim-grace", name:"Tim Grace", group:"staff", v:1, c:2,
+ role:"Managing Director, Techstars Columbus (Ohio State). Not Chicago.",
+ why:"A sitting Techstars MD watching you execute for three days. His lens (momentum, validation, homework) is the Sunday rubric in different words. A speaker, not a judge. Three weeks from his own Demo Day (Dec 10), so keep it brief.",
+ points:[
+  "Momentum is his signature concept: what changed, in numbers.",
+  "Customer validation is the failure he names.",
+  "Honest framing beats performed completeness: name limitations and how you are filling the gaps."],
+ qs:[
+  "You open your program with a talk on momentum. For a team formed Friday night, what does real momentum look like by Sunday — what would you measure?",
+  "What’s the customer-validation mistake you see most — and what does good evidence look like at idea stage?"],
+ dont:["Pitching Vanyshr (no deck, no one-liner) during judged activities","Implying he runs Chicago or can influence a Chicago decision","Asking him to review or forward the application during the weekend"],
+ follow:"Mon Nov 16 or Tue Nov 17 at the latest: thanks for something specific, one line on the weekend outcome, a plain statement that the Techstars application goes in Wed (Chicago / Anywhere / NYC) for Vanyshr, one ask (an intro to a Chicago-program alum). No deck."}
+];
+
+var FILTERS = [
+  {id:"all", label:"All", fn:function(){return true;}},
+  {id:"judge", label:"Judges", fn:function(p){return p.group==="judge";}},
+  {id:"mentor", label:"Mentors", fn:function(p){return p.group==="mentor";}},
+  {id:"staff", label:"Staff", fn:function(p){return p.group==="staff";}},
+  {id:"v1", label:"Vanyshr Tier 1", fn:function(p){return p.v===1;}},
+  {id:"c1", label:"Competition Tier 1", fn:function(p){return p.c===1;}}
+];
+
+var ORDER = [
+  {slug:"ryan-rains", when:"Saturday, early", label:"Rains"},
+  {slug:"chad-jackson", when:"In / after Workshop 1 (9:15)", label:"Jackson"},
+  {slug:"brian-anderson", when:"Midday", label:"Anderson"},
+  {slug:"scott-wagner", when:"First in the 2:30 block, if drawn", label:"Wagner"},
+  {slug:"david-morris", when:"Late (evidence audit)", label:"Morris"},
+  {slug:"jeremy-tasset", when:"1:1 block or office hours", label:"Tasset"},
+  {slug:"michael-torno", when:"1:1 block or office hours", label:"Torno"},
+  {slug:"glory-eromosele", when:"Late afternoon (pitch structure)", label:"Eromosele"},
+  {slug:"telesha-bowen", when:"Two process questions", label:"Bowen"},
+  {slug:"lesa-mitchell", when:"Sunday 9:10 workshop, then 11:00 office hour", label:"Mitchell"}
+];
+
+var state = {filter:"all", q:""};
+var cards = {};
+
+function el(tag, cls, text){
+  var e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+function initials(name){
+  var t = name.replace(/\./g,"").split(/\s+/).filter(Boolean);
+  return (t[0][0] + (t.length>1 ? t[t.length-1][0] : "")).toUpperCase();
+}
+function hue(s){
+  var h = 0; for (var i=0;i<s.length;i++){ h = (h*31 + s.charCodeAt(i)) % 360; }
+  return h;
+}
+function badge(cls, text){ return el("span","b "+cls,text); }
+function listSection(title, items, cls){
+  var wrap = document.createDocumentFragment();
+  wrap.appendChild(el("h3", null, title));
+  var box = el("div", cls||"");
+  var ul = el("ul");
+  items.forEach(function(t){ ul.appendChild(el("li", null, t)); });
+  box.appendChild(ul);
+  wrap.appendChild(box);
+  return wrap;
+}
+
+function buildCard(p){
+  var d = el("details","card");
+  d.id = p.slug;
+  var s = el("summary");
+
+  var av = el("div","av", initials(p.name));
+  av.style.background = "hsl(" + hue(p.slug) + ",45%,38%)";
+  var img = new Image();
+  img.alt = p.name;
+  img.onerror = function(){ if (img.parentNode) img.parentNode.removeChild(img); };
+  img.src = "photos/" + p.slug + ".jpg";
+  av.appendChild(img);
+  s.appendChild(av);
+
+  var who = el("div","who");
+  who.appendChild(el("div","name",p.name));
+  who.appendChild(el("div","role",p.role));
+  var bs = el("div","badges");
+  bs.appendChild(badge("r", p.group==="judge" ? "Judge" : p.group==="mentor" ? "Mentor" : "Staff"));
+  if (p.pri) bs.appendChild(badge("r", p.pri));
+  if (p.v) bs.appendChild(badge("v","Vanyshr T"+p.v));
+  if (p.c) bs.appendChild(badge("c","Competition T"+p.c));
+  (p.flags||[]).forEach(function(f){ bs.appendChild(badge("w", f)); });
+  who.appendChild(bs);
+  s.appendChild(who);
+  d.appendChild(s);
+
+  var body = el("div","body");
+  body.appendChild(el("h3",null,"Why they matter"));
+  body.appendChild(el("p",null,p.why));
+  if (p.points.length) body.appendChild(listSection("Talking points", p.points));
+  if (p.qs.length) body.appendChild(listSection("Good questions", p.qs));
+  body.appendChild(listSection("Don’t say", p.dont, "dont"));
+  body.appendChild(el("h3",null,"Follow-up"));
+  body.appendChild(el("p","follow",p.follow));
+  d.appendChild(body);
+
+  d._text = (p.name+" "+p.role+" "+p.why+" "+p.points.join(" ")+" "+p.qs.join(" ")+" "+p.dont.join(" ")+" "+p.follow+" "+(p.pri||"")+" "+(p.flags||[]).join(" ")).toLowerCase();
+  cards[p.slug] = {p:p, el:d};
+  return d;
+}
+
+function renderChips(){
+  var box = document.getElementById("chips");
+  FILTERS.forEach(function(f){
+    var b = el("button","chip",f.label);
+    b.type = "button";
+    b.setAttribute("aria-pressed", f.id===state.filter ? "true" : "false");
+    b.addEventListener("click", function(){
+      state.filter = f.id;
+      Array.prototype.forEach.call(box.children, function(c, i){
+        c.setAttribute("aria-pressed", FILTERS[i].id===state.filter ? "true":"false");
+      });
+      apply();
+    });
+    box.appendChild(b);
+  });
+}
+
+function renderOrder(){
+  var ol = document.getElementById("orderList");
+  ORDER.forEach(function(o){
+    var li = el("li");
+    var b = el("button");
+    b.type = "button";
+    var t = el("span");
+    t.appendChild(el("strong",null,o.label));
+    t.appendChild(el("span","when",o.when));
+    b.appendChild(t);
+    b.addEventListener("click", function(){ goTo(o.slug); });
+    li.appendChild(b);
+    ol.appendChild(li);
+  });
+}
+
+function goTo(slug){
+  state.filter = "all"; state.q = "";
+  document.getElementById("q").value = "";
+  var chips = document.getElementById("chips").children;
+  Array.prototype.forEach.call(chips, function(c,i){ c.setAttribute("aria-pressed", i===0 ? "true":"false"); });
+  apply();
+  var c = cards[slug].el;
+  c.open = true;
+  c.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+function apply(){
+  var f = FILTERS.filter(function(x){return x.id===state.filter;})[0];
+  var q = state.q.trim().toLowerCase();
+  var shown = 0, per = {judge:0, mentor:0, staff:0}, tot = {judge:0, mentor:0, staff:0};
+  PEOPLE.forEach(function(p){
+    var c = cards[p.slug].el;
+    var ok = f.fn(p) && (!q || c._text.indexOf(q) !== -1);
+    c.hidden = !ok;
+    tot[p.group]++;
+    if (ok){ shown++; per[p.group]++; }
+  });
+  ["judge","mentor","staff"].forEach(function(g){
+    document.getElementById("n-"+g).textContent = "(" + per[g] + (per[g]!==tot[g] ? " of "+tot[g] : "") + ")";
+  });
+  document.getElementById("count").textContent = shown + " of " + PEOPLE.length + " people";
+  document.getElementById("empty").style.display = shown ? "none" : "block";
+}
+
+function init(){
+  var lists = {judge:document.getElementById("list-judge"), mentor:document.getElementById("list-mentor"), staff:document.getElementById("list-staff")};
+  PEOPLE.forEach(function(p){ lists[p.group].appendChild(buildCard(p)); });
+  renderChips();
+  renderOrder();
+  document.getElementById("q").addEventListener("input", function(e){ state.q = e.target.value; apply(); });
+  apply();
+}
+init();
+})();
+</script>
+</body>
+</html>
